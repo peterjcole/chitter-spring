@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/")
-@EnableAutoConfiguration
-@ComponentScan
 public class ChitterController {
 
     @Autowired

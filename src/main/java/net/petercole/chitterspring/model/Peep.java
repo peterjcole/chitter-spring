@@ -14,6 +14,13 @@ public class Peep {
     public String peepText;
     public Date creationDateTime;
 
+    public Peep(String id, String username, String peepText, Date creationDateTime) {
+        this.id = id;
+        this.username = username;
+        this.peepText = peepText;
+        this.creationDateTime = creationDateTime;
+    }
+
     public Peep(String username, String peepText, Date creationDateTime) {
         this.username = username;
         this.peepText = peepText;
@@ -26,9 +33,15 @@ public class Peep {
         this.creationDateTime = new Date();
     }
 
+    public Peep() {
+    }
+
+
     public String getId() {
         return id;
     }
+
+
 
     public void setId(String id) {
         this.id = id;
