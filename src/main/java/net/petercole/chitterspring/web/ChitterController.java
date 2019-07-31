@@ -16,10 +16,10 @@ public class ChitterController {
     @Autowired
     private PeepRepository peepRepository;
 
-    @GetMapping
-    public String home() {
-        return "hi";
-    }
+//    @GetMapping()
+//    public String home() {
+//        return "hi";
+//    }
 
     @GetMapping("testcreate")
     public String testCreate() {
