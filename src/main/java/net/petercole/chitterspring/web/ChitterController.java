@@ -23,8 +23,8 @@ public class ChitterController {
 
     @GetMapping("testcreate")
     public String testCreate() {
-        Peep peep = new Peep("me", "Here is a peep");
-        peepRepository.insert(peep);
+//        Peep peep = new Peep("me", "Here is a peep");
+//        peepRepository.insert(peep);
         return "did it work?";
     }
 }

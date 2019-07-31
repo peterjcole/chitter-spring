@@ -1,6 +1,9 @@
 package net.petercole.chitterspring.model;
 
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
@@ -12,36 +15,25 @@ public class Peep {
 
     public String username;
     public String peepText;
-    public Date creationDateTime;
+//    public Date creationDateTime;
 
-    public Peep(String id, String username, String peepText, Date creationDateTime) {
+    @CreatedDate
+    private Date createdDate;
+
+    @LastModifiedDate
+    private Date lastModifiedDate;
+
+    public Peep(String id, String username, String peepText, Date createdDate, Date lastModifiedDate) {
         this.id = id;
         this.username = username;
         this.peepText = peepText;
-        this.creationDateTime = creationDateTime;
+        this.createdDate = createdDate;
+        this.lastModifiedDate = lastModifiedDate;
     }
-
-    public Peep(String username, String peepText, Date creationDateTime) {
-        this.username = username;
-        this.peepText = peepText;
-        this.creationDateTime = creationDateTime;
-    }
-
-    public Peep(String username, String peepText) {
-        this.username = username;
-        this.peepText = peepText;
-        this.creationDateTime = new Date();
-    }
-
-    public Peep() {
-    }
-
 
     public String getId() {
         return id;
     }
-
-
 
     public void setId(String id) {
         this.id = id;
@@ -63,19 +55,27 @@ public class Peep {
         this.peepText = peepText;
     }
 
-    public Date getCreationDateTime() {
-        return creationDateTime;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreationDateTime(Date creationDateTime) {
-        this.creationDateTime = creationDateTime;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     @Override
     public String toString() {
         return String.format(
                 "Peep[id=%s, username='%s', peepText='%s', time='%s']",
-                id, username, peepText, creationDateTime.toString());
+                id, username, peepText, createdDate.toString());
     }
 
 }
