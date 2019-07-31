@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/peeps")
@@ -24,5 +25,18 @@ public class PeepController {
         return peepRepository.insert(peep);
     }
 
-    
+    @PutMapping("/update")
+    public Peep updatePeeps(@RequestBody Peep peep, @RequestParam String id) {
+         peep.setId(id);
+         Optional<Peep> oldPeep = peepRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+         peep.setCreatedDate(oldPeep.get().getCreatedDate());
+         return peepRepository.save(peep);
+    }
+
+    @DeleteMapping("/delete")
+    public Peep deletePeeps(@RequestParam String id) {
+        Optional<Peep> deletedPeep = peepRepository.findById(id);
+        peepRepository.deleteById(id);
+        return deletedPeep.get();
+    }
 }
